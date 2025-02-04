@@ -1,8 +1,8 @@
-﻿using Apps.App.Constants;
+﻿using Apps.CraftCms.Constants;
 using Blackbird.Applications.Sdk.Common.Authentication;
 using Blackbird.Applications.Sdk.Common.Connections;
 
-namespace Apps.App.Connections;
+namespace Apps.CraftCms.Connections;
 
 public class ConnectionDefinition : IConnectionDefinition
 {
@@ -14,7 +14,17 @@ public class ConnectionDefinition : IConnectionDefinition
             AuthenticationType = ConnectionAuthenticationType.Undefined,
             ConnectionProperties = new List<ConnectionProperty>
             {
-                new(CredsNames.Token) { DisplayName = "API Token", Sensitive = true}
+                new(CredNames.BaseUrl)
+                {
+                    DisplayName = "Base URL", 
+                    Sensitive = false
+                },
+                new(CredNames.AccessToken)
+                {
+                    DisplayName = "Access token",
+                    Description = "Access token for authentication (without Bearer word at the beginning). Example: XXXXxxxx_XxxxxXXX",
+                    Sensitive = true
+                }
             }
         }
     };
