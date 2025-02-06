@@ -20,7 +20,6 @@ public class GraphQlQueries
         entryCount
     }";
     
-    
     public const string GetEntryById = @"query getEntry($id: [QueryArgument]) {
         entry(id: $id) {
             id
@@ -34,6 +33,10 @@ public class GraphQlQueries
             enabled
             sectionHandle
         }
+    }";
+    
+    public const string DeleteEntryById = @"mutation saveEntry($id: Int!) {
+        deleteEntry(id: $id) 
     }";
 
     public static string GetSearchEntriesQuery(string? parameters = null)

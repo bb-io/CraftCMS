@@ -40,4 +40,17 @@ public class EntryActions(InvocationContext invocationContext) : AppInvocable(in
         
         return entryWrapper.Entry;
     }
+    
+    [Action("Delete entry", Description = "Delete entry by ID")]
+    public async Task DeleteEntryAsync([ActionParameter] EntryIdentifier request)
+    {
+        var query = GraphQlQueries.DeleteEntryById;
+        var graphQlRequest = new GraphQlRequest(query, request.GetGraphQlVariables(), Credentials);
+        
+        var deleteEntryDto = await Client.ExecuteWithErrorHandling<DeleteEntryDto>(graphQlRequest);
+        if (deleteEntryDto.DeleteEntry == false)
+        {
+            throw new PluginApplicationException($"Couldn't delete entry with ID: {request.EntryId}. Please ensure that ID is valid");
+        }
+    }
 }
