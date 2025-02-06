@@ -9,7 +9,7 @@ namespace Tests.CraftCms;
 public class ConnectionValidatorTests : TestBase
 {
     [TestMethod]
-    public async Task ValidatesCorrectConnection()
+    public async Task ValidateConnection_CorrectConnection_ShouldNotFail()
     {
         var validator = new ConnectionValidator();
 
@@ -20,7 +20,7 @@ public class ConnectionValidatorTests : TestBase
     }
 
     [TestMethod]
-    public async Task DoesNotValidateIncorrectConnection()
+    public async Task ValidateConnection_InvalidToken_ShouldFail()
     {
         var validator = new ConnectionValidator();
 

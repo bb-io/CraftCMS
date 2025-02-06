@@ -10,7 +10,7 @@ public class AppInvocable : BaseInvocable
     protected AuthenticationCredentialsProvider[] Credentials =>
         InvocationContext.AuthenticationCredentialsProviders.ToArray();
 
-    protected ApiClient Client { get; }
+    protected GraphQlClient Client { get; }
 
     protected AppInvocable(InvocationContext invocationContext) : base(invocationContext)
     {

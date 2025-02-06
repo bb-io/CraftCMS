@@ -8,12 +8,22 @@ public static class CredentialsProviderExtensions
 {
     public static Uri GetUri(this IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders)
     {
-        var url = authenticationCredentialsProviders.Get(CredNames.BaseUrl);
-        if (string.IsNullOrEmpty(url.Value))
+        var credentialsProvider = authenticationCredentialsProviders.Get(CredNames.BaseUrl);
+        if (string.IsNullOrEmpty(credentialsProvider.Value))
         {
             throw new Exception("Can not find base url in AuthenticationCredentialsProvider collection");
         }
 
-        return new Uri(url.Value);
+        var url = credentialsProvider.Value;
+        if (url.EndsWith("/"))
+        {
+            url += "api";
+        }
+        else
+        {
+            url += "/api";
+        }
+        
+        return new Uri(url);
     }
 }

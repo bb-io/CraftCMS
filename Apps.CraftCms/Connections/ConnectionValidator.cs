@@ -16,9 +16,8 @@ public class ConnectionValidator : IConnectionValidator
     {
         var credentials = authenticationCredentialsProviders as AuthenticationCredentialsProvider[] ?? authenticationCredentialsProviders.ToArray();
         
-        var client = new ApiClient(credentials);
-        var request = new ApiRequest("/api", Method.Post, credentials)
-            .AddBody(GraphQlQueries.Ping);
+        var client = new GraphQlClient(credentials);
+        var request = new GraphQlRequest(GraphQlQueries.Ping, credentials);
         
         var response = await client.ExecuteAsync<DataWrapper<StringQueryDto>>(request, cancellationToken);
         return new()
