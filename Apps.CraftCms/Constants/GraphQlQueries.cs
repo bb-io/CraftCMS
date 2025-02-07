@@ -15,6 +15,7 @@ public class GraphQlQueries
             dateCreated
             dateUpdated
             enabled
+            typeHandle
             sectionHandle
         }
         entryCount
@@ -31,6 +32,7 @@ public class GraphQlQueries
             dateCreated
             dateUpdated
             enabled
+            typeHandle
             sectionHandle
         }
     }";

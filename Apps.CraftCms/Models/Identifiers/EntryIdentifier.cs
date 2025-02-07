@@ -9,11 +9,11 @@ public class EntryIdentifier : LanguageIdentifier
     [Display("Entry ID"), DataSource(typeof(EntryDataHandler))]
     public string EntryId { get; set; } = string.Empty;
 
-    public Dictionary<string, string> GetGraphQlVariables()
+    public Dictionary<string, object> GetGraphQlVariables()
     {
-        var parameters = new Dictionary<string, string>
+        var parameters = new Dictionary<string, object>
         {
-            { "id", EntryId }
+            { "id", int.Parse(EntryId) }
         };
 
         if (!string.IsNullOrEmpty(Language))
