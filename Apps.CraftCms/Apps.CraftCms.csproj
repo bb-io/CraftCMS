@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <Product>Craft CMS</Product>
         <Description>Craft is a flexible, user-friendly CMS for creating custom digital experiences on the web and beyond</Description>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <PackageId>Apps.CraftCms</PackageId>
         <AssemblyName>Apps.CraftCms</AssemblyName>
         <RootNamespace>Apps.CraftCms</RootNamespace>
@@ -21,4 +21,7 @@
         <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png" />
     </ItemGroup>
 
+    <ItemGroup>
+        <EmbeddedResource Include="..\README.md" Link="README.md" CopyToOutputDirectory="Always" />
+    </ItemGroup>
 </Project>
